@@ -39,7 +39,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getUser(Long id) {
-        return null;
+        User user = userRepository.findById(id).orElse(null);
+
+        UserResponseDTO userResponseDTO = new UserResponseDTO();
+        userResponseDTO.setId(user.getId());
+        userResponseDTO.setName(user.getName());
+        userResponseDTO.setGender(user.getGender());
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setPhone(user.getPhone());
+
+        return userResponseDTO;
     }
 
     @Override
