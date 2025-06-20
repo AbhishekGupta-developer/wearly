@@ -44,4 +44,14 @@ public class UserController {
         return new ResponseEntity<>(userService.removeUser(id), HttpStatusCode.valueOf(200));
     }
 
+    @GetMapping("/search/email/{email}")
+    public ResponseEntity<UserResponseDTO> searchByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(userService.searchByEmail(email), HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping("/search/name/{name}")
+    public ResponseEntity<List<UserResponseDTO>> searchByName(@PathVariable String name) {
+        return new ResponseEntity<>(userService.searchByName(name), HttpStatusCode.valueOf(200));
+    }
+
 }

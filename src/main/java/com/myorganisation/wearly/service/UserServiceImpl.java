@@ -109,6 +109,46 @@ public class UserServiceImpl implements UserService {
     public String removeUser(Long id) {
         String name = userRepository.findById(id).orElse(null).getName();
         userRepository.deleteById(id);
-        return "User name: " + name + "( " + id + ") has been removed successfully!";
+        return "User name: " + name + " (" + id + ") has been removed successfully!";
+    }
+
+    @Override
+    public UserResponseDTO searchByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+
+        UserResponseDTO userResponseDTO = new UserResponseDTO();
+        userResponseDTO.setId(user.getId());
+        userResponseDTO.setName(user.getName());
+        userResponseDTO.setGender(user.getGender());
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setPhone(user.getPhone());
+
+        return userResponseDTO;
+    }
+
+    @Override
+    public List<UserResponseDTO> searchByName(String name) {
+        //Get all users from database (in User)
+        List<User> userList = userRepository.findByNameContaining(name);
+
+        //Create a list of UserResponseDTO
+        List<UserResponseDTO> userResponseDTOList = new LinkedList<>();
+
+        //traversal on a list of User
+        for(User user : userList) {
+            //conversion of User to UserResponseDTO
+            UserResponseDTO userResponseDTO = new UserResponseDTO();
+
+            userResponseDTO.setId(user.getId());
+            userResponseDTO.setName(user.getName());
+            userResponseDTO.setGender(user.getGender());
+            userResponseDTO.setEmail(user.getEmail());
+            userResponseDTO.setPhone(user.getPhone());
+
+            //Inserting UserResponseDTO to list of UserResponseDTO
+            userResponseDTOList.add(userResponseDTO);
+        }
+
+        return userResponseDTOList;
     }
 }
