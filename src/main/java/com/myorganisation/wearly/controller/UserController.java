@@ -54,4 +54,9 @@ public class UserController {
         return new ResponseEntity<>(userService.searchByName(name), HttpStatusCode.valueOf(200));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<UserResponseDTO>> customSearch(@RequestParam String q) {
+        return new ResponseEntity<>(userService.customSearch(q), HttpStatus.OK);
+    }
+
 }

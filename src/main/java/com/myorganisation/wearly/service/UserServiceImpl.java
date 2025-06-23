@@ -151,4 +151,26 @@ public class UserServiceImpl implements UserService {
 
         return userResponseDTOList;
     }
+
+    @Override
+    public List<UserResponseDTO> customSearch(String q) {
+        List<User> userList = userRepository.customSearch(q);
+        List<UserResponseDTO> userResponseDTOList = new LinkedList<>();
+
+        for(User user : userList) {
+            //conversion of User to UserResponseDTO
+            UserResponseDTO userResponseDTO = new UserResponseDTO();
+
+            userResponseDTO.setId(user.getId());
+            userResponseDTO.setName(user.getName());
+            userResponseDTO.setGender(user.getGender());
+            userResponseDTO.setEmail(user.getEmail());
+            userResponseDTO.setPhone(user.getPhone());
+
+            //Inserting UserResponseDTO to list of UserResponseDTO
+            userResponseDTOList.add(userResponseDTO);
+        }
+
+        return userResponseDTOList;
+    }
 }

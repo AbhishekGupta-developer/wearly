@@ -14,4 +14,6 @@ public interface UserService {
 
     UserResponseDTO searchByEmail(String email);
     List<UserResponseDTO> searchByName(String name);
+
+    List<UserResponseDTO> customSearch(String q);
 }
