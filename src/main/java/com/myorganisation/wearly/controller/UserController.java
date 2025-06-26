@@ -3,7 +3,6 @@ package com.myorganisation.wearly.controller;
 import com.myorganisation.wearly.dto.UserRequestDTO;
 import com.myorganisation.wearly.dto.UserResponseDTO;
 import com.myorganisation.wearly.service.UserService;
-import com.myorganisation.wearly.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
