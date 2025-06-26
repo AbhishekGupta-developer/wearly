@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "31de4159-1e73-45fa-9ae3-14c27d0bdd39",
+		"name": "Wearly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41965744"
+	},
+	"item": [
+		{
+			"name": "Server status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Test Postman\",\r\n    \"gender\" : \"NOT_DISCLOSED\",\r\n    \"email\" : \"test.postman@wearly.com\",\r\n    \"phone\" : \"1234567890\",\r\n    \"password\" : \"Test@Postman2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/11",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Test2 Postman\",\r\n    \"gender\" : \"NOT_DISCLOSED\",\r\n    \"email\" : \"test.postman@wearly.com\",\r\n    \"phone\" : \"1234567890\",\r\n    \"password\" : \"Test@Postman2025\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user/11",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user?id=11",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search user by email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/search/email/manish@wearly.com",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"search",
+						"email",
+						"manish@wearly.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search user by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/search/name/Nish",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"search",
+						"name",
+						"Nish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Global search user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/search?q=1234567",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "1234567"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
