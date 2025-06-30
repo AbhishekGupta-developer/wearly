@@ -2,7 +2,9 @@ package com.myorganisation.wearly.service;
 
 import com.myorganisation.wearly.dto.UserRequestDTO;
 import com.myorganisation.wearly.dto.UserResponseDTO;
+import com.myorganisation.wearly.model.Cart;
 import com.myorganisation.wearly.model.User;
+import com.myorganisation.wearly.repository.CartRepository;
 import com.myorganisation.wearly.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,16 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @Override
     public UserResponseDTO registerUser(UserRequestDTO userRequestDTO) {
+        Cart cart = new Cart();
+//        cartRepository.save(cart);
+
         User user = new User();
         user.setName(userRequestDTO.getName());
         user.setGender(userRequestDTO.getGender());
@@ -25,7 +33,13 @@ public class UserServiceImpl implements UserService {
         user.setPhone(userRequestDTO.getPhone());
         user.setPassword(userRequestDTO.getPassword());
 
+        user.setCart(cart);
+        cart.setUser(user);
+
         userRepository.save(user);
+
+//        cart.setUser(user);
+//        cartRepository.save(cart);
 
         UserResponseDTO userResponseDTO = new UserResponseDTO();
 

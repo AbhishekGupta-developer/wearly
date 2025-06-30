@@ -22,4 +22,7 @@ public class User {
     private String phone;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart")
+    private Cart cart;
 }
