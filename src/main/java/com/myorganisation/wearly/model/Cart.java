@@ -17,7 +17,7 @@ public class Cart {
 
     private Double amount = 0D;
 
-    @OneToOne
+    @OneToOne(mappedBy = "cart")
     @JoinColumn(name = "user")
     private User user;
 
