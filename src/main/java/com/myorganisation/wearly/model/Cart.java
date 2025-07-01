@@ -1,5 +1,6 @@
 package com.myorganisation.wearly.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class Cart {
 
     @OneToOne(mappedBy = "cart")
     @JoinColumn(name = "user")
+    @JsonIgnore
     private User user;
 
 
