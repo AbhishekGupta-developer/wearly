@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         userResponseDTO.setGender(user.getGender());
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setPhone(user.getPhone());
+        userResponseDTO.setCart(user.getCart());
 
         return userResponseDTO;
     }
@@ -62,6 +63,7 @@ public class UserServiceImpl implements UserService {
         userResponseDTO.setGender(user.getGender());
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setPhone(user.getPhone());
+        userResponseDTO.setCart(user.getCart());
 
         return userResponseDTO;
     }
@@ -84,6 +86,7 @@ public class UserServiceImpl implements UserService {
             userResponseDTO.setGender(user.getGender());
             userResponseDTO.setEmail(user.getEmail());
             userResponseDTO.setPhone(user.getPhone());
+            userResponseDTO.setCart(user.getCart());
 
             //Inserting UserResponseDTO to list of UserResponseDTO
             userResponseDTOList.add(userResponseDTO);
@@ -115,6 +118,7 @@ public class UserServiceImpl implements UserService {
         userResponseDTO.setGender(user.getGender());
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setPhone(user.getPhone());
+        userResponseDTO.setCart(user.getCart());
 
         return userResponseDTO;
     }
