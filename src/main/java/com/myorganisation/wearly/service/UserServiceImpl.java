@@ -191,4 +191,17 @@ public class UserServiceImpl implements UserService {
 
         return userResponseDTOList;
     }
+    private UserResponseDTO mapUserToUserResponseDTO(User user) {
+        UserResponseDTO userResponseDTO = new UserResponseDTO();
+
+        userResponseDTO.setId(user.getId());
+        userResponseDTO.setName(user.getName());
+        userResponseDTO.setGender(user.getGender());
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setPhone(user.getPhone());
+        userResponseDTO.setCart(user.getCart());
+
+        return userResponseDTO;
+    }
+
 }
