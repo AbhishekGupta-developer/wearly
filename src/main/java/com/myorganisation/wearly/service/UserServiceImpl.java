@@ -7,6 +7,10 @@ import com.myorganisation.wearly.model.User;
 import com.myorganisation.wearly.repository.CartRepository;
 import com.myorganisation.wearly.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -191,6 +195,23 @@ public class UserServiceImpl implements UserService {
 
         return userResponseDTOList;
     }
+
+    @Override
+    public Page<UserResponseDTO> getUsersPage(Integer page, Integer size, String sortBy, String orderBy) {
+
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                (orderBy.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending())
+        );
+
+        Page<User> userPage = userRepository.findAll(pageable);
+
+        Page<UserResponseDTO> userResponseDTOPage = userPage.map(this::mapUserToUserResponseDTO);
+
+        return userResponseDTOPage;
+    }
+
     private UserResponseDTO mapUserToUserResponseDTO(User user) {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
 
