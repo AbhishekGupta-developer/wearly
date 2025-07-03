@@ -4,14 +4,17 @@ import com.myorganisation.wearly.dto.UserRequestDTO;
 import com.myorganisation.wearly.dto.UserResponseDTO;
 import com.myorganisation.wearly.model.Cart;
 import com.myorganisation.wearly.model.User;
+import com.myorganisation.wearly.model.Wallet;
 import com.myorganisation.wearly.repository.CartRepository;
 import com.myorganisation.wearly.repository.UserRepository;
+import com.myorganisation.wearly.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +28,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private WalletRepository walletRepository;
+
     @Override
+    @Transactional
     public UserResponseDTO registerUser(UserRequestDTO userRequestDTO) {
         Cart cart = new Cart();
 //        cartRepository.save(cart);
@@ -41,6 +48,10 @@ public class UserServiceImpl implements UserService {
         cart.setUser(user);
 
         userRepository.save(user);
+
+        Wallet wallet = new Wallet();
+        wallet.setUser(user);
+        walletRepository.save(wallet);
 
 //        cart.setUser(user);
 //        cartRepository.save(cart);
