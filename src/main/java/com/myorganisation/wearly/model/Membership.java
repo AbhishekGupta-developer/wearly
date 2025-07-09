@@ -16,5 +16,9 @@ public class Membership {
     private String name;
     private Double price;
     private String duration;
+
+    @ElementCollection
+    @CollectionTable(name = "membership_benefits", joinColumns = @JoinColumn(name = "membership_id"))
+    @Column(name = "benefit")
     private List<String> benefits;
 }
