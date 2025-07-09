@@ -25,4 +25,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart")
     private Cart cart;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet")
+    private Wallet wallet;
 }

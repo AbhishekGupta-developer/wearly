@@ -1,7 +1,7 @@
 package com.myorganisation.wearly.service;
 
-import com.myorganisation.wearly.dto.UserRequestDTO;
-import com.myorganisation.wearly.dto.UserResponseDTO;
+import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

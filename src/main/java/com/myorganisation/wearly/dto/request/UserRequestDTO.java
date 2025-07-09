@@ -1,4 +1,4 @@
-package com.myorganisation.wearly.dto;
+package com.myorganisation.wearly.dto.request;
 
 import com.myorganisation.wearly.model.enums.Gender;
 import lombok.Data;

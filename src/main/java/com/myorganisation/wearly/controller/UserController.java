@@ -1,7 +1,7 @@
 package com.myorganisation.wearly.controller;
 
-import com.myorganisation.wearly.dto.UserRequestDTO;
-import com.myorganisation.wearly.dto.UserResponseDTO;
+import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import com.myorganisation.wearly.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

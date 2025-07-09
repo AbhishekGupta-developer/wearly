@@ -1,7 +1,7 @@
 package com.myorganisation.wearly.service;
 
-import com.myorganisation.wearly.dto.UserRequestDTO;
-import com.myorganisation.wearly.dto.UserResponseDTO;
+import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import com.myorganisation.wearly.model.Cart;
 import com.myorganisation.wearly.model.User;
 import com.myorganisation.wearly.model.Wallet;
@@ -35,37 +35,19 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponseDTO registerUser(UserRequestDTO userRequestDTO) {
         Cart cart = new Cart();
-//        cartRepository.save(cart);
+        Wallet wallet = new Wallet();
 
-        User user = new User();
-        user.setName(userRequestDTO.getName());
-        user.setGender(userRequestDTO.getGender());
-        user.setEmail(userRequestDTO.getEmail());
-        user.setPhone(userRequestDTO.getPhone());
-        user.setPassword(userRequestDTO.getPassword());
+        User user = mapUserRequestDTOToUser(userRequestDTO, new User());
 
         user.setCart(cart);
         cart.setUser(user);
 
+        user.setWallet(wallet);
+        wallet.setUser(user);
+
         userRepository.save(user);
 
-        Wallet wallet = new Wallet();
-        wallet.setUser(user);
-        walletRepository.save(wallet);
-
-//        cart.setUser(user);
-//        cartRepository.save(cart);
-
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-
-        userResponseDTO.setId(user.getId());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setGender(user.getGender());
-        userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setPhone(user.getPhone());
-        userResponseDTO.setCart(user.getCart());
-
-        return userResponseDTO;
+        return mapUserToUserResponseDTO(user);
     }
 
     @Override
@@ -223,6 +205,17 @@ public class UserServiceImpl implements UserService {
         return userResponseDTOPage;
     }
 
+    //Helper methods
+    private User mapUserRequestDTOToUser(UserRequestDTO userRequestDTO, User user) {
+        user.setName(userRequestDTO.getName());
+        user.setGender(userRequestDTO.getGender());
+        user.setEmail(userRequestDTO.getEmail());
+        user.setPhone(userRequestDTO.getPhone());
+        user.setPassword(userRequestDTO.getPassword());
+
+        return user;
+    }
+
     private UserResponseDTO mapUserToUserResponseDTO(User user) {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
 
@@ -232,6 +225,7 @@ public class UserServiceImpl implements UserService {
         userResponseDTO.setEmail(user.getEmail());
         userResponseDTO.setPhone(user.getPhone());
         userResponseDTO.setCart(user.getCart());
+        userResponseDTO.setWallet(user.getWallet());
 
         return userResponseDTO;
     }
