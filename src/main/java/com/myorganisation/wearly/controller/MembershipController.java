@@ -32,10 +32,10 @@ public class MembershipController {
         List<String> silverBenefits = new ArrayList<>();
         silverBenefits.add("Free shipping on orders above ₹999");
         silverBenefits.add("5% cashback on selected categories");
-//        silverBenefits.add("Early access to seasonal sales");
-//        silverBenefits.add("Birthday month discount (5%)");
-//        silverBenefits.add("Standard customer support");
-//        silverBenefits.add("Access to member-only deals (limited)");
+        silverBenefits.add("Early access to seasonal sales");
+        silverBenefits.add("Birthday month discount (5%)");
+        silverBenefits.add("Standard customer support");
+        silverBenefits.add("Access to member-only deals (limited)");
 
         silver.setBenefits(silverBenefits);
 
@@ -47,12 +47,12 @@ public class MembershipController {
         List<String> goldBenefits = new ArrayList<>();
         goldBenefits.add("Free shipping on orders above ₹999");
         goldBenefits.add("10% cashback on selected categories");
-//        goldBenefits.add("48-hour early access to all sales");
-//        goldBenefits.add("Birthday gift voucher (₹250 or 10% off)");
-//        goldBenefits.add("Priority customer support");
-//        goldBenefits.add("Free returns/exchanges");
-//        goldBenefits.add("Exclusive Gold-only flash deals");
-//        goldBenefits.add("Monthly reward points bonus");
+        goldBenefits.add("48-hour early access to all sales");
+        goldBenefits.add("Birthday gift voucher (₹250 or 10% off)");
+        goldBenefits.add("Priority customer support");
+        goldBenefits.add("Free returns/exchanges");
+        goldBenefits.add("Exclusive Gold-only flash deals");
+        goldBenefits.add("Monthly reward points bonus");
 
         gold.setBenefits(goldBenefits);
 
@@ -64,13 +64,13 @@ public class MembershipController {
         List<String> platinumBenefits = new ArrayList<>();
         platinumBenefits.add("Free express shipping (same/next day where applicable)");
         platinumBenefits.add("15% cashback site-wide");
-//        platinumBenefits.add("72-hour early access to all new arrivals and sales");
-//        platinumBenefits.add("Birthday + Anniversary gift voucher (₹500 or 15% off)");
-//        platinumBenefits.add("Dedicated personal shopping assistant/chat");
-//        platinumBenefits.add("Exclusive Platinum-only products & previews");
-//        platinumBenefits.add("Triple reward points");
-//        platinumBenefits.add("Invite-only events or product drops");
-//        platinumBenefits.add("Surprise quarterly gift boxes / freebies");
+        platinumBenefits.add("72-hour early access to all new arrivals and sales");
+        platinumBenefits.add("Birthday + Anniversary gift voucher (₹500 or 15% off)");
+        platinumBenefits.add("Dedicated personal shopping assistant/chat");
+        platinumBenefits.add("Exclusive Platinum-only products & previews");
+        platinumBenefits.add("Triple reward points");
+        platinumBenefits.add("Invite-only events or product drops");
+        platinumBenefits.add("Surprise quarterly gift boxes / freebies");
 
         platinum.setBenefits(platinumBenefits);
 
