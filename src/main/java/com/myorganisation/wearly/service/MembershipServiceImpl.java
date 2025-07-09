@@ -26,7 +26,8 @@ public class MembershipServiceImpl implements MembershipService {
 
     @Override
     public MembershipResponseDTO getMembership(Long id) {
-        return null;
+        Membership membership = membershipRepository.findById(id).orElse(null);
+        return mapMembershipToMembershipResponseDTO(membership);
     }
 
     @Override
