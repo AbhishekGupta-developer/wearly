@@ -1,6 +1,7 @@
 package com.myorganisation.wearly.dto.response;
 
 import com.myorganisation.wearly.model.Cart;
+import com.myorganisation.wearly.model.Membership;
 import com.myorganisation.wearly.model.Wallet;
 import com.myorganisation.wearly.model.enums.Gender;
 import lombok.Data;
@@ -14,4 +15,5 @@ public class UserResponseDTO {
     private String phone;
     private Cart cart;
     private Wallet wallet;
+    private Membership membership;
 }
