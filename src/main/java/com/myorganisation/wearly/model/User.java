@@ -29,4 +29,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet")
     private Wallet wallet;
+
+    @ManyToOne
+    @JoinColumn(name = "membership")
+    private Membership membership;
 }
