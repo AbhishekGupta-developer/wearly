@@ -3,9 +3,11 @@ package com.myorganisation.wearly.service;
 import com.myorganisation.wearly.dto.request.UserRequestDTO;
 import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import com.myorganisation.wearly.model.Cart;
+import com.myorganisation.wearly.model.Membership;
 import com.myorganisation.wearly.model.User;
 import com.myorganisation.wearly.model.Wallet;
 import com.myorganisation.wearly.repository.CartRepository;
+import com.myorganisation.wearly.repository.MembershipRepository;
 import com.myorganisation.wearly.repository.UserRepository;
 import com.myorganisation.wearly.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private WalletRepository walletRepository;
+
+    @Autowired
+    private MembershipRepository membershipRepository;
 
     @Override
     @Transactional
@@ -213,6 +218,19 @@ public class UserServiceImpl implements UserService {
         user.setPhone(userRequestDTO.getPhone());
         user.setPassword(userRequestDTO.getPassword());
 
+        Long membershipId = userRequestDTO.getMembership();
+        if(membershipId != null) {
+                Membership membership = membershipRepository.findById(membershipId).orElse(null);
+                if(membership != null) {
+                    user.setMembership(membership);
+                }
+        }
+
+//        user.setMembership(
+//                membershipRepository.findById(
+//                        (userRequestDTO.getMembership() != null) ? userRequestDTO.getMembership() : null
+//                ).orElse(null));
+
         return user;
     }
 
@@ -226,6 +244,7 @@ public class UserServiceImpl implements UserService {
         userResponseDTO.setPhone(user.getPhone());
         userResponseDTO.setCart(user.getCart());
         userResponseDTO.setWallet(user.getWallet());
+        userResponseDTO.setMembership(user.getMembership());
 
         return userResponseDTO;
     }
