@@ -41,34 +41,3 @@ public class Product {
     private Double averageRating;
     private Integer totalReviews;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
