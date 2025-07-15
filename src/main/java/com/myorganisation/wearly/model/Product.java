@@ -26,6 +26,7 @@ public class Product {
     private Integer quantity;
     private String brand;
 
+    @Enumerated(EnumType.STRING)
     private ProductCategory category;
 
     private String imageUrl;
