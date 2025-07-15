@@ -76,5 +76,7 @@ public class ProductServiceImpl implements ProductService {
         productResponseDTO.setUpdatedAt(product.getUpdatedAt());
         productResponseDTO.setAverageRating(product.getAverageRating());
         productResponseDTO.setTotalReviews(product.getTotalReviews());
+
+        return productResponseDTO;
     }
 }
