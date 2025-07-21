@@ -1,6 +1,7 @@
 package com.myorganisation.wearly.service;
 
 import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.GenericResponseDTO;
 import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import com.myorganisation.wearly.exception.UserDoesNotExistException;
 import com.myorganisation.wearly.model.Cart;
@@ -92,14 +93,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String removeUser(Long id) {
+    public GenericResponseDTO removeUser(Long id) {
         String name = userRepository.findById(id)
                 .orElseThrow(
                         () ->  new UserDoesNotExistException("User id: " + id + " not found.")
                 )
                 .getName();
         userRepository.deleteById(id);
-        return "User name: " + name + " (" + id + ") has been removed successfully!";
+        boolean isSuccess = true;
+        String message = "User name: " + name + " (" + id + ") has been removed successfully!";
+        return new GenericResponseDTO(isSuccess, message);
     }
 
     @Override

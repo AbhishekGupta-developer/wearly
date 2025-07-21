@@ -1,6 +1,7 @@
 package com.myorganisation.wearly.service;
 
 import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.GenericResponseDTO;
 import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import org.springframework.data.domain.Page;
 
@@ -11,7 +12,7 @@ public interface UserService {
     UserResponseDTO getUser(Long id);
     List<UserResponseDTO> getAllUsers();
     UserResponseDTO updateUser(Long id, UserRequestDTO userRequestDTO);
-    String removeUser(Long id);
+    GenericResponseDTO removeUser(Long id);
 
     UserResponseDTO searchByEmail(String email);
     List<UserResponseDTO> searchByName(String name);

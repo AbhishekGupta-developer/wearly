@@ -1,6 +1,7 @@
 package com.myorganisation.wearly.controller;
 
 import com.myorganisation.wearly.dto.request.UserRequestDTO;
+import com.myorganisation.wearly.dto.response.GenericResponseDTO;
 import com.myorganisation.wearly.dto.response.UserResponseDTO;
 import com.myorganisation.wearly.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    public ResponseEntity<String> removeUser(@RequestParam Long id) {
+    public ResponseEntity<GenericResponseDTO> removeUser(@RequestParam Long id) {
         return new ResponseEntity<>(userService.removeUser(id), HttpStatusCode.valueOf(200));
     }
 
