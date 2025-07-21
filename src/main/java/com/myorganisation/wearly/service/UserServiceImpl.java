@@ -2,6 +2,7 @@ package com.myorganisation.wearly.service;
 
 import com.myorganisation.wearly.dto.request.UserRequestDTO;
 import com.myorganisation.wearly.dto.response.UserResponseDTO;
+import com.myorganisation.wearly.exception.UserDoesNotExistException;
 import com.myorganisation.wearly.model.Cart;
 import com.myorganisation.wearly.model.Membership;
 import com.myorganisation.wearly.model.User;
@@ -57,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getUser(Long id) {
-        User user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElseThrow(() -> new UserDoesNotExistException("User id: " + id + " not found."));
 
         UserResponseDTO userResponseDTO = new UserResponseDTO();
         userResponseDTO.setId(user.getId());
@@ -99,7 +100,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO updateUser(Long id, UserRequestDTO userRequestDTO) {
-        User user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElseThrow(() -> new UserDoesNotExistException("User id: " + id + " not found."));
 
         if(user == null) {
             System.out.println("User doesn't exist!");
@@ -127,7 +128,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String removeUser(Long id) {
-        String name = userRepository.findById(id).orElse(null).getName();
+        String name = userRepository.findById(id)
+                .orElseThrow(
+                        () ->  new UserDoesNotExistException("User id: " + id + " not found.")
+                )
+                .getName();
         userRepository.deleteById(id);
         return "User name: " + name + " (" + id + ") has been removed successfully!";
     }
@@ -135,6 +140,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO searchByEmail(String email) {
         User user = userRepository.findByEmail(email);
+
+        if(user == null) {
+            throw new UserDoesNotExistException("User email: " + email + " not found.");
+        }
 
         UserResponseDTO userResponseDTO = new UserResponseDTO();
         userResponseDTO.setId(user.getId());
