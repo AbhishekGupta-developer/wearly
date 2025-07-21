@@ -220,6 +220,8 @@ public class UserServiceImpl implements UserService {
     }
 
     //Helper methods
+
+    //Map UserRequestDTO to User
     private User mapUserRequestDTOToUser(UserRequestDTO userRequestDTO, User user) {
         user.setName(userRequestDTO.getName());
         user.setGender(userRequestDTO.getGender());
@@ -243,6 +245,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    //Map User to UserResponseDTO
     private UserResponseDTO mapUserToUserResponseDTO(User user) {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
 
