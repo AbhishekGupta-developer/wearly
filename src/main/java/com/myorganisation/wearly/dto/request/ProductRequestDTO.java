@@ -4,7 +4,6 @@ import com.myorganisation.wearly.model.enums.ProductCategory;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 public class ProductRequestDTO {

@@ -2,11 +2,9 @@ package com.myorganisation.wearly.controller;
 
 import com.myorganisation.wearly.dto.request.MembershipRequestDTO;
 import com.myorganisation.wearly.dto.response.GenericResponseDTO;
-import com.myorganisation.wearly.model.Membership;
 import com.myorganisation.wearly.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
