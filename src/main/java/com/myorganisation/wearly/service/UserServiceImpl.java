@@ -60,15 +60,7 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO getUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserDoesNotExistException("User id: " + id + " not found."));
 
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-        userResponseDTO.setId(user.getId());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setGender(user.getGender());
-        userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setPhone(user.getPhone());
-        userResponseDTO.setCart(user.getCart());
-
-        return userResponseDTO;
+        return mapUserToUserResponseDTO(user);
     }
 
     @Override
@@ -81,18 +73,8 @@ public class UserServiceImpl implements UserService {
 
         //traversal on a list of User
         for(User user : userList) {
-            //conversion of User to UserResponseDTO
-            UserResponseDTO userResponseDTO = new UserResponseDTO();
-
-            userResponseDTO.setId(user.getId());
-            userResponseDTO.setName(user.getName());
-            userResponseDTO.setGender(user.getGender());
-            userResponseDTO.setEmail(user.getEmail());
-            userResponseDTO.setPhone(user.getPhone());
-            userResponseDTO.setCart(user.getCart());
-
             //Inserting UserResponseDTO to list of UserResponseDTO
-            userResponseDTOList.add(userResponseDTO);
+            userResponseDTOList.add(mapUserToUserResponseDTO(user));
         }
 
         return userResponseDTOList;
@@ -102,28 +84,11 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO updateUser(Long id, UserRequestDTO userRequestDTO) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserDoesNotExistException("User id: " + id + " not found."));
 
-        if(user == null) {
-            System.out.println("User doesn't exist!");
-        } else {
-            user.setName(userRequestDTO.getName());
-            user.setGender(userRequestDTO.getGender());
-            user.setEmail(userRequestDTO.getEmail());
-            user.setPhone(userRequestDTO.getPhone());
-            user.setPassword(userRequestDTO.getPassword());
+        mapUserRequestDTOToUser(userRequestDTO, user);
 
-            userRepository.save(user);
-        }
+        userRepository.save(user);
 
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-
-        userResponseDTO.setId(user.getId());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setGender(user.getGender());
-        userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setPhone(user.getPhone());
-        userResponseDTO.setCart(user.getCart());
-
-        return userResponseDTO;
+        return mapUserToUserResponseDTO(user);
     }
 
     @Override
@@ -158,17 +123,8 @@ public class UserServiceImpl implements UserService {
 
         //traversal on a list of User
         for(User user : userList) {
-            //conversion of User to UserResponseDTO
-            UserResponseDTO userResponseDTO = new UserResponseDTO();
-
-            userResponseDTO.setId(user.getId());
-            userResponseDTO.setName(user.getName());
-            userResponseDTO.setGender(user.getGender());
-            userResponseDTO.setEmail(user.getEmail());
-            userResponseDTO.setPhone(user.getPhone());
-
             //Inserting UserResponseDTO to list of UserResponseDTO
-            userResponseDTOList.add(userResponseDTO);
+            userResponseDTOList.add(mapUserToUserResponseDTO(user));
         }
 
         return userResponseDTOList;
@@ -180,17 +136,8 @@ public class UserServiceImpl implements UserService {
         List<UserResponseDTO> userResponseDTOList = new LinkedList<>();
 
         for(User user : userList) {
-            //conversion of User to UserResponseDTO
-            UserResponseDTO userResponseDTO = new UserResponseDTO();
-
-            userResponseDTO.setId(user.getId());
-            userResponseDTO.setName(user.getName());
-            userResponseDTO.setGender(user.getGender());
-            userResponseDTO.setEmail(user.getEmail());
-            userResponseDTO.setPhone(user.getPhone());
-
             //Inserting UserResponseDTO to list of UserResponseDTO
-            userResponseDTOList.add(userResponseDTO);
+            userResponseDTOList.add(mapUserToUserResponseDTO(user));
         }
 
         return userResponseDTOList;
