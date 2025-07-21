@@ -145,14 +145,7 @@ public class UserServiceImpl implements UserService {
             throw new UserDoesNotExistException("User email: " + email + " not found.");
         }
 
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-        userResponseDTO.setId(user.getId());
-        userResponseDTO.setName(user.getName());
-        userResponseDTO.setGender(user.getGender());
-        userResponseDTO.setEmail(user.getEmail());
-        userResponseDTO.setPhone(user.getPhone());
-
-        return userResponseDTO;
+        return mapUserToUserResponseDTO(user);
     }
 
     @Override
